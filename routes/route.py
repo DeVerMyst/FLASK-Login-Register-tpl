@@ -22,17 +22,17 @@ def route_all(app, session):
             print(username, password, confirm_password)
 
             if password != confirm_password:
-                flash("Les mots de passe sont différents", "error")
+                flash("Les mots de passe sont différents", "danger")
                 return redirect(url_for("register"))
 
             if len(password) < 3:
-                flash("Le mot de passe est trop short!!!", "error")
+                flash("Le mot de passe est trop short!!!", "danger")
                 return redirect(url_for("register"))
 
             # vérifier si l'utilisateur existe
             existing_user = session.query(User).filter_by(username=username).first()
             if existing_user:
-                flash("L'utilisateur existe", "error")
+                flash("L'utilisateur existe", "danger")
                 return redirect(url_for("register"))
 
             hashed_password = generate_password_hash(password)
@@ -53,7 +53,7 @@ def route_all(app, session):
             # vérifier si l'utilisateur existe
             existing_user = session.query(User).filter_by(username=username).first()
             if not existing_user:
-                flash("L'utilisateur n'existe pas", "error")
+                flash("L'utilisateur n'existe pas", "danger")
                 return redirect(url_for("register"))
 
             condition = check_password_hash(existing_user.password, password)
@@ -61,7 +61,7 @@ def route_all(app, session):
                 flash("Utilisateur connecté", "success")
                 return redirect(url_for("index"))
             else:
-                flash("Utilisateur inconnu", "error")
+                flash("Utilisateur inconnu", "danger")
                 return redirect(url_for("login"))
 
         return render_template("login.html")
