@@ -4,7 +4,7 @@ from routes.route import route_all
 
 
 app = Flask(__name__)
-
+app.secret_key = "ma_cle_secrete"
 
 # Créez la session de base de données
 session = create_db()
