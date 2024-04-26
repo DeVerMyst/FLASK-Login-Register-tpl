@@ -1,5 +1,9 @@
+Mise en situation, login/register sans session
+
 Environnement viruel: `python -m venv .venv`
+
 Windows: `.\.venv\Scripts\activate`
+
 Macos: `source .venv/bin/activate`
 
 `pip install flask flask_sqlalchemy`
