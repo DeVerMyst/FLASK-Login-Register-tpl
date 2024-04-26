@@ -2,6 +2,8 @@ Environnement viruel: `python -m venv .venv`
 Windows: `.\.venv\Scripts\activate`
 Macos: `source .venv/bin/activate`
 
+`pip install flask flask_sqlalchemy`
+
 **Interface (partie 1) pour gérer un login/register**
 
 A partir d'un template (base.html)
