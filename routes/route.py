@@ -30,7 +30,9 @@ def route_all(app, session):
                 return redirect(url_for("register"))
 
             # vérifier si l'utilisateur existe
-            existing_user = session.query(User).filter_by(username=username).first()
+            existing_user = session.query(
+                User).filter_by(
+                    username=username).first()
             if existing_user:
                 flash("L'utilisateur existe", "danger")
                 return redirect(url_for("register"))
@@ -51,12 +53,15 @@ def route_all(app, session):
             username = request.form["username"]
             password = request.form["password"]
             # vérifier si l'utilisateur existe
-            existing_user = session.query(User).filter_by(username=username).first()
+            existing_user = session.query(
+                User).filter_by(
+                    username=username).first()
             if not existing_user:
                 flash("L'utilisateur n'existe pas", "danger")
                 return redirect(url_for("register"))
 
-            condition = check_password_hash(existing_user.password, password)
+            condition = check_password_hash(
+                existing_user.password, password)
             if condition:
                 flash("Utilisateur connecté", "success")
                 return redirect(url_for("index"))
